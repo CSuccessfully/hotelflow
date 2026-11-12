@@ -46,3 +46,23 @@ def inicializar_base_de_datos() -> None:
             );
             """
         )
+        habitaciones = conexion.execute(
+            "SELECT COUNT(*) FROM habitaciones"
+        ).fetchone()[0]
+        if habitaciones == 0:
+            conexion.executemany(
+                """
+                INSERT INTO habitaciones (numero, tipo, capacidad)
+                VALUES (?, ?, ?)
+                """,
+                [
+                    ("101", "sencilla", 2),
+                    ("102", "sencilla", 2),
+                    ("103", "sencilla", 2),
+                    ("201", "doble", 4),
+                    ("202", "doble", 4),
+                    ("203", "doble", 4),
+                    ("301", "suite", 4),
+                    ("302", "suite", 4),
+                ],
+            )

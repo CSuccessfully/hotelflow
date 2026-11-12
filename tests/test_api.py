@@ -11,6 +11,8 @@ def cliente(tmp_path, monkeypatch):
     monkeypatch.setattr(database, "DATABASE_DIR", tmp_path)
     monkeypatch.setattr(database, "DATABASE_PATH", ruta_bd)
     database.inicializar_base_de_datos()
+    with database.obtener_conexion() as conexion:
+        conexion.execute("DELETE FROM habitaciones")
     return TestClient(app)
 
 
