@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="titulo">
+  <title id="titulo">Mapa no disponible sin conexión</title>
+  <rect width="900" height="360" fill="#e7eeff"/>
+  <path d="M0 90 180 25l210 75 220-65 290 70v210l-220 35-250-65-220 55L0 275z" fill="#d1dcf8"/>
+  <path d="M20 260 190 80m35 250L450 55m40 260L720 75m30 250 120-190M80 150l170 65 220-85 210 60 170-45" fill="none" stroke="#fff" stroke-width="14" opacity=".85"/>
+  <circle cx="225" cy="145" r="12" fill="#ff6840"/><circle cx="490" cy="235" r="12" fill="#ff6840"/><circle cx="705" cy="150" r="12" fill="#ff6840"/>
+</svg>

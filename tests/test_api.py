@@ -126,12 +126,32 @@ def test_crear_reservacion_api_caso_feliz(cliente):
             "habitacion_id": habitacion["id"],
             "fecha_entrada": "2026-06-10",
             "fecha_salida": "2026-06-15",
+            "numero_personas": 2,
         },
     )
 
     assert respuesta.status_code == 201
     assert respuesta.json()["estado"] == "activa"
     assert respuesta.json()["habitacion"]["id"] == habitacion["id"]
+    assert respuesta.json()["numero_personas"] == 2
+
+
+def test_crear_reservacion_rechaza_capacidad_insuficiente(cliente):
+    habitacion, huesped = preparar_reservacion(cliente)
+
+    respuesta = cliente.post(
+        "/reservaciones",
+        json={
+            "huesped_id": huesped["id"],
+            "habitacion_id": habitacion["id"],
+            "fecha_entrada": "2026-06-10",
+            "fecha_salida": "2026-06-15",
+            "numero_personas": 3,
+        },
+    )
+
+    assert respuesta.status_code == 422
+    assert "capacidad" in respuesta.json()["detail"]
 
 
 def test_crear_doble_reservacion_devuelve_conflicto(cliente):

@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import date
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Response, status
@@ -6,6 +7,7 @@ from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from backend import database
+from backend.hoteles import buscar_hoteles, obtener_detalle_hotel
 from backend.reservaciones import (
     cancelar_reservacion,
     consultar_habitaciones_disponibles,
@@ -25,6 +27,43 @@ def consultar_salud() -> dict[str, str]:
     return {"estado": "ok", "mensaje": "El servicio está funcionando"}
 
 
+@app.get("/hoteles")
+def consultar_hoteles(
+    destino: str,
+    entrada: str,
+    salida: str,
+    huespedes: int,
+    precio_max: float | None = None,
+    estrellas: int | None = None,
+    servicios: str | None = None,
+    orden: str = "precio",
+) -> list[dict]:
+    try:
+        with database.obtener_conexion() as conexion:
+            return buscar_hoteles(
+                conexion, destino, entrada, salida, huespedes,
+                precio_max, estrellas, servicios, orden,
+            )
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+
+
+@app.get("/hoteles/{hotel_id}")
+def consultar_detalle_hotel(
+    hotel_id: int, entrada: str, salida: str, huespedes: int
+) -> dict:
+    try:
+        with database.obtener_conexion() as conexion:
+            detalle = obtener_detalle_hotel(
+                conexion, hotel_id, entrada, salida, huespedes
+            )
+    except ValueError as error:
+        raise HTTPException(status_code=422, detail=str(error)) from error
+    if detalle is None:
+        raise HTTPException(status_code=404, detail="El hotel no existe")
+    return detalle
+
+
 class HabitacionEntrada(BaseModel):
     numero: str
     tipo: str
@@ -42,6 +81,7 @@ class ReservacionEntrada(BaseModel):
     habitacion_id: int
     fecha_entrada: str
     fecha_salida: str
+    numero_personas: int = 1
 
 
 class ReservacionModificacion(BaseModel):
@@ -78,12 +118,21 @@ def _error_reservacion(error: ValueError) -> HTTPException:
 
 
 def _representar_reservacion(fila) -> dict:
+    noches = (
+        date.fromisoformat(fila["fecha_salida"])
+        - date.fromisoformat(fila["fecha_entrada"])
+    ).days
+    precio_noche = fila["habitacion_precio_noche"] or 0
     return {
         "id": fila["id"],
         "huesped_id": fila["huesped_id"],
         "habitacion_id": fila["habitacion_id"],
         "fecha_entrada": fila["fecha_entrada"],
         "fecha_salida": fila["fecha_salida"],
+        "numero_personas": fila["numero_personas"],
+        "noches": noches,
+        "total": noches * precio_noche,
+        "moneda": "MXN",
         "estado": fila["estado"],
         "huesped": {
             "id": fila["huesped_id"],
@@ -96,6 +145,11 @@ def _representar_reservacion(fila) -> dict:
             "numero": fila["habitacion_numero"],
             "tipo": fila["habitacion_tipo"],
             "capacidad": fila["habitacion_capacidad"],
+            "precio_noche": precio_noche,
+        },
+        "hotel": {
+            "id": fila["hotel_id"],
+            "nombre": fila["hotel_nombre"],
         },
     }
 
@@ -193,6 +247,7 @@ def registrar_reservacion(reservacion: ReservacionEntrada) -> dict:
                 reservacion.habitacion_id,
                 reservacion.fecha_entrada,
                 reservacion.fecha_salida,
+                reservacion.numero_personas,
             )
             fila = obtener_reservacion(conexion, reservacion_id)
     except ValueError as error:

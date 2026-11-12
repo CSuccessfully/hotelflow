@@ -33,6 +33,20 @@ def _verificar_habitacion(
         raise ValueError("La habitación no existe")
 
 
+def _verificar_capacidad(
+    conexion: sqlite3.Connection, habitacion_id: int, numero_personas: int
+) -> None:
+    if numero_personas < 1:
+        raise ValueError("El número de personas debe ser mayor o igual a 1")
+    habitacion = conexion.execute(
+        "SELECT capacidad FROM habitaciones WHERE id = ?", (habitacion_id,)
+    ).fetchone()
+    if habitacion is None:
+        raise ValueError("La habitación no existe")
+    if numero_personas > habitacion[0]:
+        raise ValueError("La capacidad de la habitación no alcanza")
+
+
 def _hay_cruce(
     conexion: sqlite3.Connection,
     habitacion_id: int,
@@ -63,12 +77,14 @@ def crear_reservacion(
     habitacion_id: int,
     fecha_entrada: str,
     fecha_salida: str,
+    numero_personas: int = 1,
 ) -> int:
     fecha_entrada, fecha_salida = _validar_fechas(
         fecha_entrada, fecha_salida
     )
     _verificar_huesped(conexion, huesped_id)
     _verificar_habitacion(conexion, habitacion_id)
+    _verificar_capacidad(conexion, habitacion_id, numero_personas)
 
     if _hay_cruce(conexion, habitacion_id, fecha_entrada, fecha_salida):
         raise ValueError("La habitación no está disponible en esas fechas")
@@ -76,10 +92,11 @@ def crear_reservacion(
     cursor = conexion.execute(
         """
         INSERT INTO reservaciones
-            (huesped_id, habitacion_id, fecha_entrada, fecha_salida, estado)
-        VALUES (?, ?, ?, ?, 'activa')
+            (huesped_id, habitacion_id, fecha_entrada, fecha_salida,
+             numero_personas, estado)
+        VALUES (?, ?, ?, ?, ?, 'activa')
         """,
-        (huesped_id, habitacion_id, fecha_entrada, fecha_salida),
+        (huesped_id, habitacion_id, fecha_entrada, fecha_salida, numero_personas),
     )
     conexion.commit()
     return cursor.lastrowid
@@ -96,7 +113,7 @@ def modificar_reservacion(
         fecha_entrada, fecha_salida
     )
     reservacion = conexion.execute(
-        "SELECT estado FROM reservaciones WHERE id = ?", (reservacion_id,)
+        "SELECT estado, numero_personas FROM reservaciones WHERE id = ?", (reservacion_id,)
     ).fetchone()
     if reservacion is None:
         raise ValueError("La reservación no existe")
@@ -104,6 +121,7 @@ def modificar_reservacion(
         raise ValueError("La reservación no está activa")
 
     _verificar_habitacion(conexion, habitacion_id)
+    _verificar_capacidad(conexion, habitacion_id, reservacion[1])
     if _hay_cruce(
         conexion,
         habitacion_id,
@@ -180,6 +198,7 @@ def obtener_reservacion(
             r.habitacion_id,
             r.fecha_entrada,
             r.fecha_salida,
+            r.numero_personas,
             r.estado,
             h.nombre AS huesped_nombre,
             h.telefono AS huesped_telefono,
@@ -187,9 +206,13 @@ def obtener_reservacion(
             a.numero AS habitacion_numero,
             a.tipo AS habitacion_tipo,
             a.capacidad AS habitacion_capacidad
+            ,a.precio_noche AS habitacion_precio_noche
+            ,h2.id AS hotel_id
+            ,h2.nombre AS hotel_nombre
         FROM reservaciones AS r
         JOIN huespedes AS h ON h.id = r.huesped_id
         JOIN habitaciones AS a ON a.id = r.habitacion_id
+        LEFT JOIN hoteles AS h2 ON h2.id = a.hotel_id
         WHERE r.id = ?
         """,
         (reservacion_id,),
@@ -207,6 +230,7 @@ def listar_reservaciones_activas(
             r.habitacion_id,
             r.fecha_entrada,
             r.fecha_salida,
+            r.numero_personas,
             r.estado,
             h.nombre AS huesped_nombre,
             h.telefono AS huesped_telefono,
@@ -214,9 +238,13 @@ def listar_reservaciones_activas(
             a.numero AS habitacion_numero,
             a.tipo AS habitacion_tipo,
             a.capacidad AS habitacion_capacidad
+            ,a.precio_noche AS habitacion_precio_noche
+            ,h2.id AS hotel_id
+            ,h2.nombre AS hotel_nombre
         FROM reservaciones AS r
         JOIN huespedes AS h ON h.id = r.huesped_id
         JOIN habitaciones AS a ON a.id = r.habitacion_id
+        LEFT JOIN hoteles AS h2 ON h2.id = a.hotel_id
         WHERE r.estado = 'activa'
         ORDER BY r.fecha_entrada, r.id
         """

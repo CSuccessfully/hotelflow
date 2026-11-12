@@ -1,6 +1,8 @@
 from pathlib import Path
 import sqlite3
 
+from backend.semilla import cargar_semilla
+
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATABASE_DIR = ROOT_DIR / "data"
@@ -19,11 +21,38 @@ def inicializar_base_de_datos() -> None:
     with obtener_conexion() as conexion:
         conexion.executescript(
             """
+            CREATE TABLE IF NOT EXISTS hoteles (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                clave TEXT NOT NULL UNIQUE,
+                nombre TEXT NOT NULL,
+                ciudad TEXT NOT NULL,
+                direccion TEXT NOT NULL,
+                latitud REAL NOT NULL,
+                longitud REAL NOT NULL,
+                estrellas INTEGER NOT NULL CHECK (estrellas BETWEEN 1 AND 5),
+                puntuacion REAL NOT NULL CHECK (puntuacion BETWEEN 0 AND 5),
+                servicios TEXT NOT NULL DEFAULT '[]',
+                descripcion TEXT NOT NULL DEFAULT '',
+                fotos TEXT NOT NULL DEFAULT '[]'
+            );
+
             CREATE TABLE IF NOT EXISTS habitaciones (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 numero TEXT NOT NULL UNIQUE,
                 tipo TEXT NOT NULL,
-                capacidad INTEGER NOT NULL CHECK (capacidad > 0)
+                capacidad INTEGER NOT NULL CHECK (capacidad > 0),
+                hotel_id INTEGER REFERENCES hoteles (id),
+                precio_noche REAL NOT NULL DEFAULT 0 CHECK (precio_noche >= 0)
+            );
+
+            CREATE TABLE IF NOT EXISTS tarifas_proveedor (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                hotel_id INTEGER NOT NULL,
+                proveedor TEXT NOT NULL,
+                precio_noche REAL NOT NULL CHECK (precio_noche > 0),
+                moneda TEXT NOT NULL DEFAULT 'MXN',
+                UNIQUE (hotel_id, proveedor),
+                FOREIGN KEY (hotel_id) REFERENCES hoteles (id)
             );
 
             CREATE TABLE IF NOT EXISTS huespedes (
@@ -39,6 +68,8 @@ def inicializar_base_de_datos() -> None:
                 habitacion_id INTEGER NOT NULL,
                 fecha_entrada TEXT NOT NULL,
                 fecha_salida TEXT NOT NULL,
+                numero_personas INTEGER NOT NULL DEFAULT 1
+                    CHECK (numero_personas > 0),
                 estado TEXT NOT NULL DEFAULT 'activa'
                     CHECK (estado IN ('activa', 'cancelada')),
                 FOREIGN KEY (huesped_id) REFERENCES huespedes (id),
@@ -46,23 +77,27 @@ def inicializar_base_de_datos() -> None:
             );
             """
         )
-        habitaciones = conexion.execute(
-            "SELECT COUNT(*) FROM habitaciones"
-        ).fetchone()[0]
-        if habitaciones == 0:
-            conexion.executemany(
-                """
-                INSERT INTO habitaciones (numero, tipo, capacidad)
-                VALUES (?, ?, ?)
-                """,
-                [
-                    ("101", "sencilla", 2),
-                    ("102", "sencilla", 2),
-                    ("103", "sencilla", 2),
-                    ("201", "doble", 4),
-                    ("202", "doble", 4),
-                    ("203", "doble", 4),
-                    ("301", "suite", 4),
-                    ("302", "suite", 4),
-                ],
+
+        # Compatibilidad con bases creadas antes del catálogo de hoteles.
+        columnas = {
+            fila[1]
+            for fila in conexion.execute("PRAGMA table_info(habitaciones)")
+        }
+        if "hotel_id" not in columnas:
+            conexion.execute(
+                "ALTER TABLE habitaciones ADD COLUMN hotel_id INTEGER REFERENCES hoteles(id)"
             )
+        if "precio_noche" not in columnas:
+            conexion.execute(
+                "ALTER TABLE habitaciones ADD COLUMN precio_noche REAL NOT NULL DEFAULT 0"
+            )
+        columnas_reservaciones = {
+            fila[1]
+            for fila in conexion.execute("PRAGMA table_info(reservaciones)")
+        }
+        if "numero_personas" not in columnas_reservaciones:
+            conexion.execute(
+                "ALTER TABLE reservaciones ADD COLUMN numero_personas INTEGER NOT NULL DEFAULT 1"
+            )
+
+        cargar_semilla(conexion)

@@ -42,6 +42,38 @@ def test_inicializar_base_no_duplica_habitaciones(base_temporal):
     assert total == 8
 
 
+def test_inicializar_base_carga_hoteles_y_tarifas(base_temporal):
+    base_temporal.inicializar_base_de_datos()
+
+    with base_temporal.obtener_conexion() as conexion:
+        hoteles = conexion.execute("SELECT COUNT(*) FROM hoteles").fetchone()[0]
+        habitaciones = conexion.execute(
+            "SELECT COUNT(*) FROM habitaciones WHERE hotel_id IS NOT NULL"
+        ).fetchone()[0]
+        tarifas = conexion.execute("SELECT COUNT(*) FROM tarifas_proveedor").fetchone()[0]
+        datos = conexion.execute(
+            "SELECT precio_noche, moneda FROM tarifas_proveedor"
+        ).fetchall()
+
+    assert hoteles == 3
+    assert habitaciones == 8
+    assert tarifas == 9
+    assert all(precio > 0 and moneda == "MXN" for precio, moneda in datos)
+
+
+def test_inicializar_base_no_duplica_hoteles_ni_tarifas(base_temporal):
+    base_temporal.inicializar_base_de_datos()
+    base_temporal.inicializar_base_de_datos()
+
+    with base_temporal.obtener_conexion() as conexion:
+        conteos = conexion.execute(
+            "SELECT (SELECT COUNT(*) FROM hoteles), "
+            "(SELECT COUNT(*) FROM tarifas_proveedor)"
+        ).fetchone()
+
+    assert tuple(conteos) == (3, 9)
+
+
 def test_inicializar_base_conserva_habitaciones_existentes(base_temporal):
     base_temporal.inicializar_base_de_datos()
     with base_temporal.obtener_conexion() as conexion:

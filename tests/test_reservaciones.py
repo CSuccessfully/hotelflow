@@ -19,7 +19,8 @@ def conexion():
             id INTEGER PRIMARY KEY,
             numero TEXT NOT NULL UNIQUE,
             tipo TEXT NOT NULL,
-            capacidad INTEGER NOT NULL
+            capacidad INTEGER NOT NULL,
+            precio_noche REAL NOT NULL DEFAULT 850
         );
         CREATE TABLE huespedes (
             id INTEGER PRIMARY KEY,
@@ -33,6 +34,7 @@ def conexion():
             habitacion_id INTEGER NOT NULL,
             fecha_entrada TEXT NOT NULL,
             fecha_salida TEXT NOT NULL,
+            numero_personas INTEGER NOT NULL DEFAULT 1,
             estado TEXT NOT NULL DEFAULT 'activa',
             FOREIGN KEY (huesped_id) REFERENCES huespedes (id),
             FOREIGN KEY (habitacion_id) REFERENCES habitaciones (id)

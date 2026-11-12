@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="titulo">
+  <title id="titulo">Imagen de hotel no disponible</title>
+  <rect width="800" height="500" fill="#e7eeff"/>
+  <path d="M120 390h560V210l-120-90-110 70-90-45-120 85z" fill="#0a66c2" opacity=".8"/>
+  <rect x="260" y="250" width="280" height="140" fill="#fff" opacity=".9"/>
+  <path d="M300 390v-80h55v80m90 0v-80h55v80" fill="#004e99"/>
+  <circle cx="400" cy="155" r="38" fill="#ff6840" opacity=".85"/>
+</svg>

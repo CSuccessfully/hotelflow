@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 88" role="img" aria-labelledby="titulo">
+  <title id="titulo">HotelFlow</title>
+  <rect width="320" height="88" rx="16" fill="#004e99"/>
+  <path d="M28 61V27h9v13h17V27h9v34h-9V48H37v13z" fill="#fff"/>
+  <path d="M75 61V27h9v26h17v8z" fill="#ff6840"/>
+  <text x="117" y="58" fill="#fff" font-family="system-ui,sans-serif" font-size="32" font-weight="700">HotelFlow</text>
+</svg>
