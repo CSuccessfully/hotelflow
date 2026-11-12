@@ -1,29 +1,29 @@
-# HotelFlow: definición del alcance (Fase 2)
+# HotelFlow: definición del alcance (Fase 2, versión 2)
 
 ## Usuarios principales
 
-El usuario principal es el recepcionista de un hotel general. Es quien registra y consulta las habitaciones, atiende a los huéspedes y crea, modifica o cancela las reservaciones desde el mostrador. En esta versión no habrá otros tipos de usuario, como huéspedes que reserven por su cuenta o administradores con permisos distintos.
+El usuario principal es el viajero que quiere encontrar y reservar un hotel. En esta versión no habrá cuentas de usuario, roles ni panel de administración. Los hoteles se cargan desde datos de demostración.
 
 ## Problema en una frase
 
-Los recepcionistas de hoteles necesitan una forma rápida y confiable de consultar disponibilidad y gestionar reservaciones, porque hacerlo a mano provoca errores como dobles reservaciones.
+Los viajeros necesitan una forma rápida y clara de comparar hoteles, precios y ubicación para unas fechas y un número de personas, y reservar sin errores como dobles reservaciones.
 
 ## Solución propuesta
 
-HotelFlow es una aplicación sencilla para el recepcionista. Le permite ver qué habitaciones están disponibles en unas fechas dadas, registrar al huésped y crear la reservación, y después modificarla, cancelarla o consultar todas las reservaciones activas. El sistema evita por sí mismo que una misma habitación se reserve dos veces en fechas que se cruzan.
+HotelFlow es una página web estilo metabuscador. El viajero indica destino, fechas y número de huéspedes, y ve varios hoteles con precio total, comparativa de precios por proveedor, filtros y un mapa. Puede abrir el detalle de un hotel, reservar una habitación, modificar o cancelar su reservación y consultar las reservaciones activas. El sistema evita por sí mismo que una misma habitación se reserve dos veces en fechas que se cruzan.
 
 ## Qué incluye y qué no
 
-El MVP incluye el registro y la consulta de habitaciones, el control de disponibilidad por fechas, el registro de huéspedes, la creación, modificación y cancelación de reservaciones, y el listado de reservaciones activas. El flujo principal que se va a demostrar es buscar disponibilidad, reservar y cancelar.
+Incluye: catálogo de hoteles y habitaciones, búsqueda por destino, fechas y huéspedes, precio total, comparativa de precios por proveedor (simulada), filtros y orden, mapa, detalle del hotel, registro de huésped, creación, modificación y cancelación de reservaciones, y listado de reservaciones activas. El flujo a demostrar es buscar, comparar, reservar y cancelar.
 
-El MVP no incluye pagos ni facturación, reservaciones hechas por los propios huéspedes por internet, manejo de varios hoteles, tarifas por temporada ni descuentos, envío de correos o mensajes de confirmación, ni reportes avanzados. Tampoco incluye inicio de sesión con roles, que queda como mejora futura.
+No incluye: pagos o facturación, vuelos, paquetes, ofertas de temporada, cuentas o inicio de sesión, favoritos, notificaciones, conexión a servicios reales de reservas, correos de confirmación, reportes avanzados, varios idiomas o monedas.
 
 ## Supuestos y riesgos
 
-Se asume que el hotel tiene un número fijo de habitaciones y que cada reservación corresponde a una sola habitación y a un solo huésped titular. También se asume que el recepcionista usa la aplicación desde una computadora, con los datos guardados de forma local o en una base de datos sencilla.
+Se asume que los datos (hoteles, fotos, precios por proveedor) son simulados y que cada reservación corresponde a una habitación y un huésped titular. Se usa una sola moneda.
 
-El principal riesgo es el tiempo, porque el curso termina pronto y hay que mantener el alcance pequeño. Otro riesgo es la lógica de fechas: una validación mal hecha puede permitir dobles reservaciones, que es justo el problema que se quiere resolver, así que debe probarse con cuidado. Por último, como parte de la evidencia del problema sigue pendiente, conviene confirmarla antes de la presentación.
+El principal riesgo es el tiempo: el alcance creció y hay que construir por incrementos pequeños, con la v1 como plan B. Otro riesgo es la lógica de fechas, que ahora también define la disponibilidad en la búsqueda y debe probarse con cuidado. Un tercer riesgo es depender de internet en la demo (mapa, fuentes, imágenes), por eso todo se guarda localmente.
 
 ## Criterios de éxito
 
-El MVP se considera exitoso si el recepcionista puede crear una reservación completa en un solo flujo sin errores, si el sistema rechaza una reservación que se cruza en fechas con otra de la misma habitación, si una cancelación libera la habitación para esas fechas, y si el listado de reservaciones activas refleja siempre el estado real. Además, otra persona debe poder ejecutar el proyecto siguiendo únicamente las instrucciones del README.
+El MVP se considera exitoso si el viajero puede buscar, comparar y reservar en un solo flujo sin errores, si la búsqueda no muestra habitaciones ocupadas ni sin capacidad, si el sistema rechaza una reservación que se cruza con otra de la misma habitación, si una cancelación libera la habitación, y si el listado de activas refleja el estado real. Además, otra persona debe poder ejecutar el proyecto siguiendo solo el README, y la demo debe funcionar sin internet.

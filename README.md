@@ -12,103 +12,59 @@ Sistema de reservaciones hoteleras para el proyecto integrador del curso
 
 ## Problema que resuelve
 
-HotelFlow ayuda al recepcionista de un hotel a consultar disponibilidad y
-gestionar reservaciones. Busca evitar los errores de llevar la información de
-forma manual, especialmente las dobles reservaciones de una misma habitación
-en fechas que se cruzan.
+HotelFlow ayuda al viajero a buscar hoteles por destino, fechas y número de huéspedes, comparar precios y ubicación en un mapa, y reservar sin dobles reservaciones de una misma habitación.
+
+> Nota: los hoteles, fotos y precios por proveedor son datos de demostración, no reales.
 
 ## Alcance
 
 ### Incluye
 
-- Registro y consulta de habitaciones.
-- Consulta de disponibilidad por fechas.
-- Registro de huéspedes.
-- Creación, modificación y cancelación de reservaciones.
+- Catálogo de hoteles y habitaciones.
+- Búsqueda por destino, fechas y huéspedes, con solo habitaciones libres y con capacidad suficiente.
+- Precio total y comparativa de precios por proveedor (simulada).
+- Filtros, orden y mapa de resultados.
+- Detalle del hotel.
+- Registro de huéspedes y creación, modificación y cancelación de reservaciones.
 - Listado de reservaciones activas.
-- Validación de fechas y prevención de cruces entre reservaciones activas.
-- Interfaz web para el recepcionista, con estados de carga, error y éxito.
 
 ### No incluye
 
 - Pagos ni facturación.
-- Reservaciones hechas directamente por huéspedes en línea.
-- Manejo de varios hoteles.
-- Tarifas por temporada ni descuentos.
-- Envío de correos o mensajes de confirmación.
+- Vuelos ni paquetes.
+- Cuentas, inicio de sesión, favoritos ni notificaciones.
+- Conexión a servicios reales de reservas.
+- Correos de confirmación.
 - Reportes avanzados.
-- Inicio de sesión con roles.
 
-## Tecnologías
+## Tecnologías (agregar)
 
-- Python 3.
-- FastAPI para la API.
-- SQLite para los datos.
-- HTML, CSS y JavaScript sin frameworks para la interfaz.
-- pytest para las pruebas automatizadas.
+- Leaflet y OpenStreetMap para el mapa (archivos locales).
 
-## Instalación
-
-Desde la raíz del repositorio, instala las dependencias:
-
-```bash
-pip install -r requirements.txt
-```
-
-## Ejecución
-
-Inicia el servidor con:
-
-```bash
-uvicorn backend.main:app --reload
-```
-
-La aplicación sirve la interfaz web desde la ruta raíz y la API desde sus
-endpoints correspondientes. La base de datos SQLite se crea localmente al
-iniciar la aplicación.
-
-## Pruebas
-
-Ejecuta todas las pruebas desde la raíz del repositorio:
-
-```bash
-pytest
-```
-
-Las pruebas cubren la lógica de reservaciones, validación de fechas, cruces,
-cancelaciones y endpoints de la API.
-
-## Estructura del repositorio
+## Estructura del repositorio (cambios)
 
 ```text
 hotelflow/
+├── .opencode/agents/        # Subagentes: disenador, imagenes, revisor, probador
 ├── backend/
-│   ├── database.py          # Conexión y creación de tablas SQLite
-│   ├── main.py              # Aplicación FastAPI y endpoints
-│   └── reservaciones.py     # Lógica de reservaciones y regla de fechas
+│   ├── hoteles.py           # Búsqueda, filtros, precios y comparativa
+│   └── semilla.py           # Hoteles, habitaciones y precios de demostración
 ├── frontend/
-│   ├── index.html           # Interfaz del recepcionista
-│   ├── styles.css           # Estilos responsive
-│   ├── app.js               # Interacción con la API
-│   └── logo.svg             # Logotipo de HotelFlow
-├── tests/
-│   ├── test_api.py          # Pruebas de la API
-│   └── test_reservaciones.py # Pruebas de la lógica de reservaciones
-├── documentacion/           # Problema, alcance, requerimientos y decisiones
-├── AGENTS.md                # Contexto y reglas de trabajo del proyecto
-├── requirements.txt         # Dependencias de Python
-└── README.md
+│   ├── img/                 # Imágenes locales e imagenes.json
+│   └── vendor/              # Leaflet y fuentes locales
+└── documentacion/
+    ├── diseno.md            # Guía de diseño
+    ├── diseno/estilo.html   # Diseño original de Stitch (referencia)
+    └── creditos-imagenes.md # Fuente y licencia de cada imagen
 ```
 
-## Herramientas de IA y forma de trabajo
+## Herramientas de IA y forma de trabajo (reemplaza la lista de agentes)
 
-El equipo utiliza **OpenCode** en la terminal de VS Code:
+El equipo utiliza **OpenCode** en la terminal de VS Code, además de **Stitch** para generar el diseño base:
 
-- **Modo plan:** analizar el contexto, leer los requerimientos y dividir cada
-  incremento antes de implementarlo. No modifica archivos.
-- **Modo build:** implementar una historia o incremento pequeño siguiendo el
-  plan y `AGENTS.md`.
-- **Subagente revisor:** revisa los cambios contra los requerimientos, la
-  regla de fechas, las validaciones y las pruebas. No modifica archivos.
-- **Subagente probador:** ejecuta `pytest`, informa cuántas pruebas pasaron o
-  fallaron y señala pruebas faltantes. No modifica archivos.
+- **Modo plan:** analiza el contexto y divide cada incremento. No modifica archivos.
+- **Modo build:** implementa un incremento pequeño siguiendo el plan y `AGENTS.md`.
+- **Subagente `@disenador`:** crea y modifica la interfaz en `frontend/` siguiendo `documentacion/diseno.md`.
+- **Subagente `@imagenes`:** consigue y registra las imágenes en `frontend/img/`.
+- **Subagente `@revisor`:** revisa cambios, diseño, imágenes y pruebas. No modifica archivos.
+- **Subagente `@probador`:** ejecuta `pytest` e informa los resultados. No modifica archivos.
