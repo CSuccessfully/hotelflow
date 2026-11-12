@@ -1,0 +1,602 @@
+<!DOCTYPE html>
+
+<html lang="es"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"surface-container-high":"#dee8ff","surface-dim":"#cfdaf2","inverse-primary":"#a8c8ff","inverse-on-surface":"#ecf1ff","outline-variant":"#c1c6d4","surface-container-lowest":"#ffffff","on-tertiary-fixed-variant":"#00522e","on-secondary":"#ffffff","surface":"#f9f9ff","on-tertiary":"#ffffff","secondary-fixed-dim":"#ffb4a1","surface-container-low":"#f0f3ff","surface-container":"#e7eeff","on-primary-fixed-variant":"#00468a","on-primary-fixed":"#001b3d","primary-fixed":"#d6e3ff","on-secondary-container":"#611300","tertiary-container":"#007644","on-error":"#ffffff","primary-container":"#0a66c2","secondary-container":"#ff6840","tertiary-fixed-dim":"#73db9b","surface-bright":"#f9f9ff","surface-container-highest":"#d8e3fb","error-container":"#ffdad6","on-secondary-fixed":"#3c0800","on-tertiary-fixed":"#00210f","on-error-container":"#93000a","error":"#ba1a1a","tertiary-fixed":"#8ff8b6","on-primary":"#ffffff","inverse-surface":"#263143","primary-fixed-dim":"#a8c8ff","on-tertiary-container":"#92fbb8","outline":"#727783","tertiary":"#005b33","on-primary-container":"#dbe6ff","surface-tint":"#005eb5","on-secondary-fixed-variant":"#891e00","on-surface":"#111c2d","background":"#f9f9ff","secondary-fixed":"#ffdbd2","surface-variant":"#d8e3fb","primary":"#004e99","secondary":"#af300a","on-background":"#111c2d","on-surface-variant":"#414752"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"margin":"2rem","gutter":"1.5rem","space-md":"1rem","space-xs":"0.25rem","space-sm":"0.5rem","space-lg":"1.5rem","margin-sm":"1rem","space-xl":"2.5rem","gutter-sm":"1rem"},"fontFamily":{"body-sm":["Inter"],"headline-lg-mobile":["Plus Jakarta Sans"],"display-lg-mobile":["Plus Jakarta Sans"],"headline-lg":["Plus Jakarta Sans"],"headline-sm":["Plus Jakarta Sans"],"body-lg":["Inter"],"headline-md":["Plus Jakarta Sans"],"body-md":["Inter"],"label-md":["Inter"],"label-sm":["Inter"],"display-lg":["Plus Jakarta Sans"],"label-lg":["Inter"],"price-hero":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"headline-lg-mobile":["24px",{"lineHeight":"32px","fontWeight":"700"}],"display-lg-mobile":["32px",{"lineHeight":"40px","fontWeight":"700"}],"headline-lg":["32px",{"lineHeight":"40px","fontWeight":"700"}],"headline-sm":["18px",{"lineHeight":"24px","fontWeight":"600"}],"body-lg":["16px",{"lineHeight":"24px","fontWeight":"400"}],"headline-md":["22px",{"lineHeight":"28px","fontWeight":"600"}],"body-md":["14px",{"lineHeight":"20px","fontWeight":"400"}],"label-md":["12px",{"lineHeight":"16px","fontWeight":"600"}],"label-sm":["11px",{"lineHeight":"14px","fontWeight":"700"}],"display-lg":["48px",{"lineHeight":"56px","fontWeight":"700"}],"label-lg":["14px",{"lineHeight":"20px","fontWeight":"600"}],"price-hero":["28px",{"lineHeight":"32px","fontWeight":"800"}]}}}}</script></head><body class="bg-surface font-body-md text-on-surface antialiased"><header class="fixed top-0 left-0 right-0 w-full z-50 bg-surface-container-lowest shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-16 max-w-7xl mx-auto px-margin flex items-center justify-between"><div class="flex items-center gap-space-lg"><a class="flex items-center gap-space-sm" data-path="hoteles" href="#"><img alt="HotelCompare Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/ALJJyrA77gID2EwLpm9LnRcq9A3xn9zbEkos773VFo_cZ9OLFa8XBiL26YmpXyKEID0JpiBbACaWFL5ROUxjE1F5HvC3eZ9b__yVGykGgI4QoBDJgm56TEIpaLbFIf5SIjk0D4_Hp_WEXJmMiDN5M3f3ZsY8rUlr0IPNTFG53MB7MhAVjGW3Jt8H-1DEl0Y0jxJ3exOxVwejvVwhumxVDYjfhoJfYKHASkj_BXu77N7gaqZNAQ"/><span class="font-headline-sm text-headline-sm text-primary font-bold tracking-tight">hotelcompare</span></a><nav class="hidden lg:flex items-center gap-space-xs" data-active-classes="bg-surface-container-high text-primary font-semibold rounded-lg"><a aria-current="page" class="px-space-md py-space-xs transition-colors bg-surface-container-high text-primary font-semibold rounded-lg" data-path="hoteles" href="#">Hoteles</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="vuelos" href="#">Vuelos</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="paquetes" href="#">Paquetes</a><a class="px-space-md py-space-xs rounded-lg font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors" data-path="ofertas-de-temporada" href="#">Ofertas de temporada</a></nav></div><div class="flex items-center gap-space-sm"><button class="flex items-center gap-space-xs px-space-sm py-space-xs rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors font-label-md text-label-md" type="button"><span class="material-symbols-outlined text-[18px]">language</span><span>EUR € / ES 🇪🇸</span></button><a class="relative p-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" data-path="mis-favoritos" href="#" title="Mis favoritos"><span class="material-symbols-outlined text-[22px]">favorite</span><span class="absolute top-1 right-1 w-4 h-4 bg-secondary text-on-secondary rounded-full font-label-sm text-[10px] flex items-center justify-center font-bold">3</span></a><a class="relative p-space-sm rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-colors flex items-center justify-center" data-path="alertas-de-precio" href="#" title="Alertas de precio"><span class="material-symbols-outlined text-[22px]">notifications</span><span class="absolute top-1.5 right-1.5 w-2 h-2 bg-primary rounded-full"></span></a><div class="h-6 w-px bg-surface-container-high mx-space-xs"></div><a class="flex items-center gap-space-xs pl-space-xs pr-space-sm py-space-xs rounded-lg hover:bg-surface-container transition-colors" data-path="mi-cuenta" href="#"><img alt="Profile" class="w-8 h-8 rounded-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALivmgquekBn3dVPHF2FcLMbS0_E5VpHndqz_s8H2OhbjfCoownqcecsMcMlxi4D45cAGnLaUQiKMdaWAUpKLM1BlcGi9VqEMWoYdNdAgiuRfHuz9UTEkWDOaA2WlM-x6dpruKzSPSsepGwAAclEAMZ4dBe47t3WOPYi8GA60T3osGMob3Wd_c3WpJ3NxIFWUIdnemsSN2q0DKCJArYvff5NKhhgAv5EaBTTnS2okC"/><span class="hidden sm:inline font-label-lg text-label-lg text-on-surface">Mi Cuenta</span><span class="material-symbols-outlined text-[18px] text-on-surface-variant">keyboard_arrow_down</span></a></div></div></header><main class="w-full pt-16 bg-surface"><div class="flex flex-col w-full">
+<!-- Top Hero & Search Segment -->
+<section class="relative w-full overflow-hidden bg-gradient-to-b from-surface-container to-surface pb-space-xl pt-space-lg">
+<!-- Subtle Ambient Circles -->
+<div class="absolute -top-24 left-1/2 -translate-x-1/2 w-[850px] h-[340px] bg-primary-fixed/30 rounded-full blur-3xl pointer-events-none -z-10"></div>
+<div class="absolute top-48 right-10 w-72 h-72 bg-secondary-fixed/30 rounded-full blur-2xl pointer-events-none -z-10"></div>
+<div class="max-w-7xl mx-auto px-margin flex flex-col items-center text-center">
+<!-- Trust Pill -->
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 rounded-full bg-surface-container-lowest shadow-sm mb-space-md">
+<span class="material-symbols-outlined text-[16px] text-tertiary-container" style="font-variation-settings: 'FILL' 1;">verified</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Metabuscador inteligente e imparcial</span>
+</div>
+<!-- Headline & Subtitle -->
+<h1 class="font-display-lg text-display-lg text-on-surface max-w-4xl tracking-tight mb-space-sm">
+        Compara precios de hoteles en <span class="text-primary-container">cientos de páginas web</span>
+</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-2xl mb-space-xl">
+        Encuentra la mejor oferta y ahorra hasta un 40% en tu próxima estancia rastreando al instante tarifas directas y agencias líderes.
+      </p>
+<!-- Trivago-Style Unified Search Console -->
+<div class="w-full max-w-5xl bg-surface-container-lowest rounded-xl shadow-xl p-space-xs transition-shadow hover:shadow-2xl">
+<form class="grid grid-cols-1 md:grid-cols-12 gap-space-xs items-center" onsubmit="event.preventDefault(); window.location.href='#destinos';">
+<!-- Destination Field -->
+<div class="relative md:col-span-4 p-space-sm rounded-lg hover:bg-surface-container transition-colors flex items-center gap-space-sm group cursor-pointer text-left">
+<span class="material-symbols-outlined text-primary text-[26px]">search</span>
+<div class="flex-1 min-w-0">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Destino o alojamiento</label>
+<input class="w-full font-headline-sm text-headline-sm text-on-surface bg-transparent outline-none truncate placeholder:text-outline-variant font-semibold" placeholder="Ej: Madrid, París, Cancún, Roma" type="text" value="Madrid, España"/>
+</div>
+</div>
+<div class="hidden md:block w-px h-10 bg-surface-container-high my-auto"></div>
+<!-- Dates Field -->
+<div class="relative md:col-span-3 p-space-sm rounded-lg hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer text-left">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">calendar_month</span>
+<div class="flex-1 min-w-0">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Entrada — Salida</label>
+<div class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">18 nov. - 23 nov.</div>
+<span class="font-body-sm text-body-sm text-tertiary font-medium">5 noches seleccionadas</span>
+</div>
+</div>
+<div class="hidden md:block w-px h-10 bg-surface-container-high my-auto"></div>
+<!-- Guests & Rooms Field -->
+<div class="relative md:col-span-3 p-space-sm rounded-lg hover:bg-surface-container transition-colors flex items-center gap-space-sm cursor-pointer text-left">
+<span class="material-symbols-outlined text-on-surface-variant text-[24px]">group</span>
+<div class="flex-1 min-w-0">
+<label class="block font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider">Huéspedes y piezas</label>
+<div class="font-headline-sm text-headline-sm text-on-surface truncate font-semibold">2 adultos · 1 hab.</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Viaje en pareja</span>
+</div>
+</div>
+<!-- Search Button -->
+<div class="md:col-span-2 p-space-xs">
+<button class="w-full h-14 bg-secondary-container hover:bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg font-bold flex items-center justify-center gap-space-xs shadow-md transition-all active:scale-[0.98]" type="submit">
+<span class="material-symbols-outlined text-[20px]">search</span>
+<span>Buscar ofertas</span>
+</button>
+</div>
+</form>
+</div>
+<!-- Verified Engine Partner Strip -->
+<div class="mt-space-md flex flex-wrap items-center justify-center gap-space-md text-on-surface-variant">
+<span class="font-label-sm text-label-sm font-semibold uppercase tracking-wider">Comparamos precios de:</span>
+<div class="flex flex-wrap items-center gap-space-xs">
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-md text-label-md">Booking.com</span>
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-md text-label-md">Expedia</span>
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-md text-label-md">Hotels.com</span>
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-md text-label-md">Agoda</span>
+<span class="px-space-sm py-1 bg-surface-container-high rounded text-on-surface font-label-md text-label-md">Trip.com</span>
+<span class="px-space-sm py-1 bg-surface-container-lowest shadow-sm rounded text-primary font-label-md text-label-md font-bold">+ Web oficial directa</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Live Market Trends / Value Proposition Bento -->
+<section class="max-w-7xl mx-auto px-margin py-space-xl w-full">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Card 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-space-md text-primary">
+<span class="material-symbols-outlined text-[28px]">price_check</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Ahorro garantizado</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Rastreamos simultáneamente más de 200 portales y webs oficiales en menos de 2 segundos para asegurar la tarifa real más competitiva.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-tertiary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">trending_down</span> Hasta 40% ahorro
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Datos auditados</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-space-md text-secondary">
+<span class="material-symbols-outlined text-[28px]">receipt_long</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Sin comisiones ocultas</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Transparencia total. El precio mostrado incluye tasas turísticas, impuestos aplicables y condiciones explícitas de cancelación antes de reservar.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-primary font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">format_image_left</span> Paridad 100% clara
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sin cargos sorpresa</span>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between">
+<div>
+<div class="w-12 h-12 rounded-lg bg-surface-container flex items-center justify-center mb-space-md text-tertiary">
+<span class="material-symbols-outlined text-[28px]">apartment</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface mb-space-xs">Más de 5M de alojamientos</h3>
+<p class="font-body-md text-body-md text-on-surface-variant">
+            Desde cadenas de 5 estrellas y hoteles boutique independientes hasta resorts vacacionales y apartamentos céntricos en 190 países.
+          </p>
+</div>
+<div class="mt-space-md pt-space-sm flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-on-surface font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]">travel_explore</span> Cobertura mundial
+          </span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Inventario en vivo</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Flash Deals & Real Rate Comparison Section -->
+<section class="w-full bg-surface-container-low py-space-xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-sm">
+<div>
+<div class="inline-flex items-center gap-1 px-space-sm py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-bold uppercase tracking-wider mb-2">
+<span class="material-symbols-outlined text-[14px]">bolt</span> Oportunidades del día
+          </div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Ofertas flash y descuentos exclusivos</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precios comparados en tiempo real frente a los principales operadores de reservas.</p>
+</div>
+<a class="inline-flex items-center gap-space-xs font-label-lg text-label-lg text-primary hover:text-on-primary-fixed-variant font-semibold" href="#destinos">
+          Ver todas las promociones
+          <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</a>
+</div>
+<!-- 3 Featured Deal Cards with Live Comparison -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-space-lg">
+<!-- Hotel Card 1 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col justify-between">
+<div>
+<div class="relative w-full h-56">
+<img class="w-full h-full object-cover" data-alt="Modern luxury urban hotel exterior in Gran Via Madrid at sunset with golden reflections on sleek glass windows and a grand classic limestone facade under a warm twilight sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJWsOkJNqS-o9pan0QMGX2CR_TU6ZLCutAs1VQ_YgvXl93NnTGOGvTrZejnGdueQj31cDTj2F68iZ8oEZrqxcUK402vArTwUs2S-bMIoAYtFcEBG0MYxD0LI7O0bFkwCivqha8miLLEl0TkZ2is2Tlbbb_3Yb_Q-0z7yrm9Y3HXu8aZe-tfcKuq-T_MwhEJf4nWLN91Cllgn_5k6lftelhhN8Ih_1tNO0NMfI2QYse"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary font-label-sm text-label-sm font-bold px-space-sm py-1 rounded shadow">
+                -38% AHORRO
+              </div>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur px-space-xs py-1 rounded flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold">4.9</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(1.2k)</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Gran Vía, Madrid • 0.4 km del centro
+              </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-sm">Gran Hotel Metropolis Madrid</h3>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">Desayuno buffet incluido</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed font-label-sm text-label-sm text-on-tertiary-fixed-variant">Cancelación gratuita</span>
+</div>
+<!-- Price Matrix Tabular snippet -->
+<div class="bg-surface-container-low rounded-lg p-space-sm space-y-2 mb-space-md">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Web Oficial</span>
+<span class="line-through text-outline">195€</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Expedia</span>
+<span class="text-on-surface">164€</span>
+</div>
+<div class="flex items-center justify-between font-label-md bg-surface-container-lowest p-1.5 rounded">
+<div class="flex items-center gap-1">
+<span class="text-tertiary font-bold">Booking.com</span>
+<span class="px-1.5 py-0.2 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] uppercase font-bold">Mejor precio</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">119€</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0">
+<button class="w-full py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1 shadow-sm transition-colors">
+<span>Ver comparativa completa</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Hotel Card 2 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col justify-between">
+<div>
+<div class="relative w-full h-56">
+<img class="w-full h-full object-cover" data-alt="Chic boutique hotel room in Paris with floor to ceiling French windows overlooking the rooftops of Montmartre, elegant linen bedding, warm ambient reading lights, modern oak accents." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZx9fmrwGfv88r-RNs7FrqXJBUGcKgqvjTBnfJTphixMszDpbbPSluDprrBno5DO6QUvldNbc92fKlixXVsG-zrc0ahLivfehbqdbv5-Z8cMA8JGzaYMatEoYgekNK96CrLxLqQQ-Ozio_Es-lc-sSn2Yvpbe4O17gpEhh5_Xxq7VJA4a-6CYJHKfUQri0JomRFnzlfe_Q5O-1WVhAbjeutbb_ZtqY9-PbQGGsWwxv"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary font-label-sm text-label-sm font-bold px-space-sm py-1 rounded shadow">
+                -32% AHORRO
+              </div>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur px-space-xs py-1 rounded flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold">4.8</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(890)</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Montmartre, París • 1.2 km de Sacré-Cœur
+              </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-sm">Le Marais Elegance Suites</h3>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">Wifi 6 de alta velocidad</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed font-label-sm text-label-sm text-on-tertiary-fixed-variant">Sin pago por adelantado</span>
+</div>
+<!-- Price Matrix Tabular snippet -->
+<div class="bg-surface-container-low rounded-lg p-space-sm space-y-2 mb-space-md">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Hotels.com</span>
+<span class="line-through text-outline">210€</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Agoda</span>
+<span class="text-on-surface">178€</span>
+</div>
+<div class="flex items-center justify-between font-label-md bg-surface-container-lowest p-1.5 rounded">
+<div class="flex items-center gap-1">
+<span class="text-tertiary font-bold">Trip.com</span>
+<span class="px-1.5 py-0.2 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] uppercase font-bold">Mejor precio</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">142€</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0">
+<button class="w-full py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1 shadow-sm transition-colors">
+<span>Ver comparativa completa</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+<!-- Hotel Card 3 -->
+<div class="bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all flex flex-col justify-between">
+<div>
+<div class="relative w-full h-56">
+<img class="w-full h-full object-cover" data-alt="Sunlit Mediterranean seaside resort in Barcelona near Barceloneta Beach with an infinity pool edge facing the azure sea, palm trees gently swaying, minimalist modern loungers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBscEt4Dl29oV0NSNhtIMXbiKkJUk1VTtap42brc5a-xNQUhK5fsAFW0Nt8X63xU1qzj2bu9yRjnqNs9B92IrOQQFv8UuPpnN7Dg7_HH9EatsjyDjlaNxpygZaiw7f2u9oAnvMvdVxKCvedRieSqMdAkXVdiKIIkEKFelFuJLqf66SkQlvpct7yX4PXjo7iXwm9B3P39q0Rz8_ptjiEO_sFGPKn4ZLSrqD4PxTQPMTc"/>
+<div class="absolute top-3 left-3 bg-secondary-container text-on-secondary font-label-sm text-label-sm font-bold px-space-sm py-1 rounded shadow">
+                -41% AHORRO
+              </div>
+<div class="absolute top-3 right-3 bg-surface-container-lowest/90 backdrop-blur px-space-xs py-1 rounded flex items-center gap-1 text-on-surface">
+<span class="material-symbols-outlined text-amber-500 text-[16px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="font-label-md text-label-md font-bold">4.7</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">(2.4k)</span>
+</div>
+</div>
+<div class="p-space-md">
+<div class="flex items-center gap-1 text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span class="material-symbols-outlined text-[16px]">location_on</span> Paseo Marítimo, Barcelona • Frente al mar
+              </div>
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold mb-space-sm">W Coastline Marina Resort</h3>
+<div class="flex flex-wrap gap-1 mb-space-md">
+<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-on-surface-variant">Acceso a spa y piscina</span>
+<span class="px-2 py-0.5 rounded bg-tertiary-fixed font-label-sm text-label-sm text-on-tertiary-fixed-variant">Cancelación 24h antes</span>
+</div>
+<!-- Price Matrix Tabular snippet -->
+<div class="bg-surface-container-low rounded-lg p-space-sm space-y-2 mb-space-md">
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Booking.com</span>
+<span class="line-through text-outline">189€</span>
+</div>
+<div class="flex items-center justify-between text-body-sm">
+<span class="text-on-surface-variant font-label-md">Hotels.com</span>
+<span class="text-on-surface">148€</span>
+</div>
+<div class="flex items-center justify-between font-label-md bg-surface-container-lowest p-1.5 rounded">
+<div class="flex items-center gap-1">
+<span class="text-tertiary font-bold">Web Oficial Directa</span>
+<span class="px-1.5 py-0.2 bg-tertiary-fixed text-on-tertiary-fixed-variant rounded text-[10px] uppercase font-bold">Mejor precio</span>
+</div>
+<span class="font-headline-sm text-headline-sm text-tertiary font-bold">109€</span>
+</div>
+</div>
+</div>
+</div>
+<div class="p-space-md pt-0">
+<button class="w-full py-space-sm bg-primary-container hover:bg-primary text-on-primary rounded-lg font-label-lg text-label-lg font-semibold flex items-center justify-center gap-1 shadow-sm transition-colors">
+<span>Ver comparativa completa</span>
+<span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Popular Destinations Matrix -->
+<section class="max-w-7xl mx-auto px-margin py-space-xl w-full" id="destinos">
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Inspiración para tu próxima escapada</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">Destinos populares del momento</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Precios promedio por noche basados en las búsquedas más recientes de hoy.</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container-high text-primary font-label-md text-label-md font-semibold">Europa</button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md">Playas</button>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface-variant font-label-md text-label-md">América</button>
+</div>
+</div>
+<!-- 6 Destination Cards Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-space-lg">
+<!-- Destination 1: Barcelona -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="High angle panoramic view of Barcelona showing the iconic grid street plan of Eixample and the Mediterranean Sea in the distance on a bright crisp morning." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBebs5uwLJyL7on0WdtzKWLpk-cUwq72GyLsaueQnEfV96vElzorYk-_x63963qU6HOowhB6YNqnZylDCd0ASxteu4lBm-OK1x-Vdef0q16aYeud91DZ6L8WJ1W_KPM_VSmP-e5aYineOQc7rs8o4FFyBD-LX-FGcH_4Eok6ovB9XK_sGK1bxr3dgFViW4huPU5wiQbXsYt2AwJB5B0yFPHsmLIg5ZrAWB_ZzvXwOUX"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 428 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">Barcelona</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">España</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">84€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+<!-- Destination 2: Roma -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Majestic Roman Colosseum at dusk surrounded by warm ambient city streetlights and cobbled ancient stones under a cobalt blue sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDCfWFfJGrriSrZ-r7E6NArw151ZbP3DDKOBPjdLKb30jiUq7isFSuDGhfPpArT7655FMcqT7E4DyyOrmVxxmQ1hzdVtJlys6IkaQ1evEmuNX9qkc47S9AANqnQDiwQgerO_mfLZKegyl7eep3RppsDchom8MjxSJEZY3uum-0LWb_X2nh9iBuz4AX8vJ14j6pZlCTaiMf5frqg0hcsrHO678xmCN-bm1znI5jEcTI9"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 380 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">Roma</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">Italia</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">92€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+<!-- Destination 3: Lisboa -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Iconic yellow vintage tram climbing a picturesque steep hillside street in Lisbon Alfama surrounded by colorful azulejos tiles and vibrant bougainvillea flowers." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBvgFljfpEKx5VCRX7bPaV13rQrhgrTQcImJ9fzMNfzooiomDiKMRKH92bYV-_BBBqlA1gaik_HhbyyiITtnGH4XHXh-tiPwT3MRNccoC9jZbm6FcLnfSVY8bC48Vgibv2Mh_DTfZNKmHfIdN6xO6OwBLMs14PrfoIh7BqLdQ-o23h5mmQM3awhhh_w3r_OYghsXKqq7B4sGXW2VHKVCLoLS7EVvwQ02U6SeWZ-HwMI"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 295 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">Lisboa</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">Portugal</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">79€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+<!-- Destination 4: París -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Charming Parisian cafe terrace overlooking the Seine River and classic Haussmann buildings bathed in soft golden afternoon light." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYN0PAgq3N6Xj5N-DxUIsSnBh5BS7k23KOTQS_AN6au-kwoPVuPCmy6Q_sFMLinIKhQs98KnnMV0EnNPWhM4bEMhf4bLFAUJ0Sfx9rXNTIkSuGEbJfw1aEa0kSziw116kXbYFm67NDCSv9yBrHoIFr5jKmxODv22d82K8VTmHzaD2d-p5SVBYN5kgTKO-Z0Kps-RNGR91RW9LJrUUPzSqqusppgiBxnWe52Y62O53x"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 512 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">París</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">Francia</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">115€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+<!-- Destination 5: Ámsterdam -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Historic Amsterdam canal houses reflecting on tranquil water with bicycles parked on an arched brick bridge under a glowing dusk sky." src="https://lh3.googleusercontent.com/aida-public/AB6AXuA5zzxEae3GvOA_Y10UCJDQmAIjldHPxkdJxYcrQP-3hzDnCuuPyoOdeLPdBq-SpMYHkhzLWfrDIylqYVqs74GRNmrNiksCtc0ycMshrLuiY1LRIzP4C1z5RHok1F7sMU_VuSaJqKZItWWAxoIuBOB-t-CgXTRsqQWUe1oPC7pf3LCSSHWzvUfA0GKvSYRBH2gsfbbk6dP63iceXvp1XS-ft6KLEmLGn1_8PE3QwSng"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 240 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">Ámsterdam</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">Países Bajos</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">128€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+<!-- Destination 6: Nueva York -->
+<a class="group relative rounded-xl overflow-hidden shadow-sm hover:shadow-lg transition-all h-72 flex flex-col justify-end p-space-md" href="#">
+<img class="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Panoramic dusk view of Manhattan skyline and illuminated skyscrapers looking toward Brooklyn Bridge with cinematic purple and amber hues." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN6bz1O9vAYLwsTM0-vWxJwvS9RMCxL3FzL4uHPa09iro_lcZxlJP2_QkCfzgbJUo3M5wtXLrjzg-dBi3CIub-tkzgW2DHnrDsld87vIBC1lMcRvhhE3qbrb6zH9WE_LiYbNvJwp2ciAzNn_McWL_xzESphpSVRjZqPha3u9YL5ClXtvMhJpMXKK2OTPi3pyPtTZF4QwTC3YLYArGaxXpjLAl2JpNkW2HkeWLZQEgm"/>
+<div class="absolute inset-0 bg-gradient-to-t from-on-surface/90 via-on-surface/40 to-transparent"></div>
+<div class="relative z-10 flex items-end justify-between">
+<div>
+<span class="text-surface-container-lowest font-body-sm text-body-sm opacity-90 flex items-center gap-1">
+<span class="w-2 h-2 rounded-full bg-tertiary-fixed inline-block"></span> 630 ofertas hoy
+            </span>
+<h3 class="font-headline-md text-headline-md text-surface-container-lowest font-bold">Nueva York</h3>
+<span class="text-surface-dim font-body-sm text-body-sm">Estados Unidos</span>
+</div>
+<div class="text-right">
+<span class="text-surface-dim font-label-sm text-label-sm block">Desde</span>
+<div class="font-price-hero text-price-hero text-surface-container-lowest leading-none">180€<span class="font-body-sm text-[12px] opacity-80">/noche</span></div>
+</div>
+</div>
+</a>
+</div>
+</section>
+<!-- Interactive Map Location Explorer Banner -->
+<section class="max-w-7xl mx-auto px-margin pb-space-xl w-full">
+<div class="bg-surface-container-low rounded-xl p-space-lg flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="max-w-lg">
+<span class="font-label-sm text-label-sm text-secondary font-bold uppercase tracking-wider">Herramienta de radar geográfico</span>
+<h3 class="font-headline-md text-headline-md text-on-surface font-bold mt-1 mb-space-sm">¿Buscas hotel cerca de un monumento o barrio específico?</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-space-md">Explora nuestro mapa interactivo en vivo con filtros por distancia al centro, transporte público y zonas con mejor relación calidad-precio.</p>
+<div class="flex items-center gap-space-sm">
+<button class="px-space-md py-space-sm bg-primary-container text-on-primary rounded-lg font-label-md text-label-md font-semibold flex items-center gap-1 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">map</span>
+<span>Abrir vista de mapa</span>
+</button>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Sin salir de la web</span>
+</div>
+</div>
+<div class="w-full lg:w-96 h-52 rounded-lg bg-cover bg-center shadow-md relative overflow-hidden flex items-end p-space-sm" data-location="Puerta del Sol, Madrid, Spain" style="">
+<div class="bg-surface-container-lowest/90 backdrop-blur rounded p-space-xs font-label-sm text-label-sm text-on-surface flex items-center gap-1">
+<span class="material-symbols-outlined text-primary text-[16px]">pin_drop</span>
+<span>Centrado en: Puerta del Sol, Madrid</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Trustpilot & Traveler Testimonials Section -->
+<section class="w-full bg-surface-container py-space-xl">
+<div class="max-w-7xl mx-auto px-margin">
+<div class="text-center max-w-2xl mx-auto mb-space-lg">
+<div class="flex items-center justify-center gap-1 text-tertiary-container mb-2">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">star</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Confianza de millones de viajeros</h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Puntuación sobresaliente de <strong class="text-on-surface">4.8 de 5</strong> en más de 120.000 opiniones verificadas.</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Testimonial 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface italic mb-space-md">
+            “Iba a reservar directamente en una gran agencia por 180€ la noche. Al chequear en hotelcompare descubrí que el mismo hotel tenía tarifa en su web oficial a 118€ con desayuno. Ahorré más de 240€ en una escapada.”
+          </p>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-surface-container-high flex items-center justify-center font-bold text-primary">
+              CR
+            </div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Carlos Romero</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Viajero recurrente • Madrid</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface italic mb-space-md">
+            “La claridad visual es insuperable. Te muestra los 6 o 7 portales en una lista rápida y limpia sin trampas ni trucos de precios antes de impuestos. El mejor metabuscador de viajes en español hoy por hoy.”
+          </p>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-secondary-fixed flex items-center justify-center font-bold text-on-secondary-fixed">
+              LP
+            </div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Lucía Pardo</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Reserva de vacaciones • Valencia</div>
+</div>
+</div>
+</div>
+<!-- Testimonial 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between">
+<p class="font-body-md text-body-md text-on-surface italic mb-space-md">
+            “Organizar el viaje familiar a Roma para 5 personas era un caos hasta que comparamos aquí. Encontramos un hotel céntrico con 2 habitaciones conectadas a precio inmejorable en Agoda con confirmación inmediata.”
+          </p>
+<div class="flex items-center gap-space-sm">
+<div class="w-10 h-10 rounded-full bg-tertiary-fixed flex items-center justify-center font-bold text-on-tertiary-fixed-variant">
+              AG
+            </div>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Alejandro Gómez</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Viajes en familia • Sevilla</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive FAQ Accordion Section -->
+<section class="max-w-4xl mx-auto px-margin py-space-xl w-full">
+<div class="text-center mb-space-lg">
+<span class="font-label-sm text-label-sm text-primary font-bold uppercase tracking-wider">Resolvemos tus dudas</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface font-bold">Preguntas frecuentes</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Todo lo que necesitas saber sobre el funcionamiento de hotelcompare.</p>
+</div>
+<div class="space-y-space-sm" id="faq-container">
+<!-- FAQ Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-md font-headline-sm text-headline-sm text-on-surface font-semibold hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)" type="button">
+<span>¿Cómo encuentra hotelcompare los precios más bajos?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content px-space-md pb-space-md pt-0 font-body-md text-body-md text-on-surface-variant">
+          Nuestra tecnología de metabúsqueda se conecta simultáneamente a través de APIs de alta velocidad con cientos de agencias de viajes online (OTAs como Booking, Expedia o Trip.com) y sistemas de reserva directa de cadenas hoteleras. Comparamos los precios publicados al milisegundo y te mostramos las opciones ordenadas por el precio final real, sin favoritismos ni alteraciones.
+        </div>
+</div>
+<!-- FAQ Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-md font-headline-sm text-headline-sm text-on-surface font-semibold hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)" type="button">
+<span>¿Tengo que pagar algo por usar el comparador?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md pt-0 font-body-md text-body-md text-on-surface-variant">
+          No, en absoluto. hotelcompare es un servicio 100% gratuito para los viajeros. No añadimos ninguna tasa de gestión ni comisión sobre el importe que ves. Cuando eliges una tarifa, te redirigimos al proveedor oficial seleccionado para que completes la reserva con su garantía directa.
+        </div>
+</div>
+<!-- FAQ Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-md font-headline-sm text-headline-sm text-on-surface font-semibold hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)" type="button">
+<span>¿Dónde realizo la reserva final y el pago?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md pt-0 font-body-md text-body-md text-on-surface-variant">
+          Al hacer clic en “Ver oferta”, serás transferido de forma segura al sitio web del proveedor (por ejemplo, el portal del hotel o la agencia asociada). Allí ingresarás tus datos de pago bajo sus protocolos de cifrado y recibirás tu confirmación de reserva oficial por correo electrónico.
+        </div>
+</div>
+<!-- FAQ Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl shadow-sm overflow-hidden">
+<button class="w-full p-space-md text-left flex items-center justify-between gap-space-md font-headline-sm text-headline-sm text-on-surface font-semibold hover:bg-surface-container-low transition-colors" onclick="toggleFaq(this)" type="button">
+<span>¿Los precios mostrados incluyen impuestos y tasas?</span>
+<span class="material-symbols-outlined text-primary text-[22px] transition-transform duration-200">expand_more</span>
+</button>
+<div class="faq-content hidden px-space-md pb-space-md pt-0 font-body-md text-body-md text-on-surface-variant">
+          Sí. Aplicamos una estricta política de paridad neta. Todos los importes indican de forma clara el coste total estimado incluyendo IVA y cargos obligatorios habituales, para que no encuentres sorpresas desagradables al dar el paso final en la pasarela de pago.
+        </div>
+</div>
+</div>
+</section>
+<!-- Bottom CTA Subscription Strip -->
+<section class="max-w-7xl mx-auto px-margin pb-space-xl w-full">
+<div class="bg-gradient-to-r from-primary to-primary-container rounded-xl p-space-lg text-on-primary flex flex-col md:flex-row items-center justify-between gap-space-lg shadow-lg">
+<div class="max-w-xl">
+<span class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-wider font-bold">Alertas de tarifas exclusivas</span>
+<h3 class="font-headline-lg text-headline-lg font-bold text-on-primary mt-1 mb-space-xs">¿No quieres perderte bajadas de precio?</h3>
+<p class="font-body-md text-body-md text-on-primary-container">Recibe un aviso inmediato cuando los hoteles de tus destinos favoritos bajen más de un 25% su tarifa habitual.</p>
+</div>
+<div class="w-full md:w-auto flex flex-col sm:flex-row gap-space-xs">
+<input class="px-space-md py-space-sm rounded-lg bg-surface-container-lowest text-on-surface outline-none font-body-md text-body-md min-w-[280px]" placeholder="Introduce tu correo electrónico" type="email"/>
+<button class="px-space-md py-space-sm bg-secondary-container hover:bg-secondary text-on-secondary rounded-lg font-label-lg text-label-lg font-bold transition-colors whitespace-nowrap shadow">
+          Activar alertas gratis
+        </button>
+</div>
+</div>
+</section>
+<script>
+    function toggleFaq(btn) {
+      const content = btn.nextElementSibling;
+      const icon = btn.querySelector('.material-symbols-outlined');
+      const isHidden = content.classList.contains('hidden');
+      
+      // Close all first for clean single-accordion feel
+      document.querySelectorAll('#faq-container .faq-content').forEach(c => c.classList.add('hidden'));
+      document.querySelectorAll('#faq-container button span.material-symbols-outlined').forEach(i => i.style.transform = 'rotate(0deg)');
+      
+      if (isHidden) {
+        content.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      }
+    }
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="bg-surface-container py-space-md"><div class="max-w-7xl mx-auto px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><span class="material-symbols-outlined text-primary text-[28px]">verified</span><div><p class="font-label-lg text-label-lg text-on-surface font-semibold">Comparamos más de 5 millones de hoteles en cientos de webs de reserva</p><p class="font-body-sm text-body-sm text-on-surface-variant">Precios actualizados en tiempo real y paridad garantizada con los mayores proveedores globales.</p></div></div><div class="flex items-center gap-space-md text-on-surface-variant font-label-sm text-label-sm font-semibold uppercase tracking-wider"><span class="px-space-sm py-space-xs bg-surface-container-lowest rounded">Booking.com</span><span class="px-space-sm py-space-xs bg-surface-container-lowest rounded">Expedia</span><span class="px-space-sm py-space-xs bg-surface-container-lowest rounded">Hotels.com</span><span class="px-space-sm py-space-xs bg-surface-container-lowest rounded">Agoda</span><span class="px-space-sm py-space-xs bg-surface-container-lowest rounded">Trip.com</span></div></div></div><div class="max-w-7xl mx-auto px-margin py-space-xl grid grid-cols-2 md:grid-cols-4 gap-space-lg"><div class="flex flex-col gap-space-sm"><h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">Destinos populares</h4><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hoteles en Madrid</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hoteles en Barcelona</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hoteles en París</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hoteles en Roma</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Hoteles en Londres</a></div><div class="flex flex-col gap-space-sm"><h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">Sobre nosotros</h4><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Cómo funciona hotelcompare</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Transparencia y precios</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Trabaja con nosotros</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Prensa y noticias</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Sostenibilidad en viajes</a></div><div class="flex flex-col gap-space-sm"><h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">Proveedores y partners</h4><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Portal de agencias y OTA</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Añadir mi propiedad hotelera</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Programa de afiliados</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">API de conectividad</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Guía de verificación de tarifas</a></div><div class="flex flex-col gap-space-sm"><h4 class="font-headline-sm text-headline-sm text-on-surface font-semibold mb-space-xs">Asistencia y Legal</h4><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Centro de ayuda</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Preguntas frecuentes</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Términos y condiciones</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Política de privacidad</a><a class="font-body-md text-body-md text-on-surface-variant hover:text-primary transition-colors" href="#">Gestión de cookies</a></div></div><div class="max-w-7xl mx-auto px-margin py-space-md flex flex-col sm:flex-row items-center justify-between gap-space-sm"><p class="font-body-sm text-body-sm text-on-surface-variant">© 2025 hotelcompare. Todos los derechos reservados. Las marcas y logotipos de reserva pertenecen a sus respectivos propietarios.</p><div class="flex items-center gap-space-md"><span class="font-body-sm text-body-sm text-on-surface-variant">Soporte multimoneda auditado</span><span class="h-3 w-px bg-outline-variant"></span><span class="font-body-sm text-body-sm text-on-surface-variant">Certificación SSL 256-bit</span></div></div></footer></body></html>
