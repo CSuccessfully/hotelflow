@@ -100,3 +100,50 @@ def test_registrar_huesped_rechaza_texto_vacio(cliente, datos, campo):
 
     assert respuesta.status_code == 422
     assert campo in respuesta.json()["detail"]
+
+
+def preparar_reservacion(cliente):
+    habitacion = cliente.post(
+        "/habitaciones",
+        json={"numero": "101", "tipo": "sencilla", "capacidad": 2},
+    ).json()
+    huesped = cliente.post(
+        "/huespedes",
+        json={"nombre": "Ana López", "telefono": "555-0101"},
+    ).json()
+    return habitacion, huesped
+
+
+def test_crear_reservacion_api_caso_feliz(cliente):
+    habitacion, huesped = preparar_reservacion(cliente)
+
+    respuesta = cliente.post(
+        "/reservaciones",
+        json={
+            "huesped_id": huesped["id"],
+            "habitacion_id": habitacion["id"],
+            "fecha_entrada": "2026-06-10",
+            "fecha_salida": "2026-06-15",
+        },
+    )
+
+    assert respuesta.status_code == 201
+    assert respuesta.json()["estado"] == "activa"
+    assert respuesta.json()["habitacion"]["id"] == habitacion["id"]
+
+
+def test_crear_doble_reservacion_devuelve_conflicto(cliente):
+    habitacion, huesped = preparar_reservacion(cliente)
+    datos = {
+        "huesped_id": huesped["id"],
+        "habitacion_id": habitacion["id"],
+        "fecha_entrada": "2026-06-10",
+        "fecha_salida": "2026-06-15",
+    }
+    primera = cliente.post("/reservaciones", json=datos)
+
+    segunda = cliente.post("/reservaciones", json=datos)
+
+    assert primera.status_code == 201
+    assert segunda.status_code == 409
+    assert "disponible" in segunda.json()["detail"]

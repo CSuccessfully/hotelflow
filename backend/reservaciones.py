@@ -140,3 +140,84 @@ def cancelar_reservacion(
         (reservacion_id,),
     )
     conexion.commit()
+
+
+def consultar_habitaciones_disponibles(
+    conexion: sqlite3.Connection,
+    fecha_entrada: str,
+    fecha_salida: str,
+) -> list[sqlite3.Row | tuple]:
+    fecha_entrada, fecha_salida = _validar_fechas(
+        fecha_entrada, fecha_salida
+    )
+    filas = conexion.execute(
+        """
+        SELECT h.id, h.numero, h.tipo, h.capacidad
+        FROM habitaciones AS h
+        WHERE NOT EXISTS (
+            SELECT 1
+            FROM reservaciones AS r
+            WHERE r.habitacion_id = h.id
+              AND r.estado = 'activa'
+              AND r.fecha_entrada < ?
+              AND r.fecha_salida > ?
+        )
+        ORDER BY h.numero
+        """,
+        (fecha_salida, fecha_entrada),
+    ).fetchall()
+    return filas
+
+
+def obtener_reservacion(
+    conexion: sqlite3.Connection, reservacion_id: int
+) -> sqlite3.Row | tuple | None:
+    return conexion.execute(
+        """
+        SELECT
+            r.id,
+            r.huesped_id,
+            r.habitacion_id,
+            r.fecha_entrada,
+            r.fecha_salida,
+            r.estado,
+            h.nombre AS huesped_nombre,
+            h.telefono AS huesped_telefono,
+            h.correo AS huesped_correo,
+            a.numero AS habitacion_numero,
+            a.tipo AS habitacion_tipo,
+            a.capacidad AS habitacion_capacidad
+        FROM reservaciones AS r
+        JOIN huespedes AS h ON h.id = r.huesped_id
+        JOIN habitaciones AS a ON a.id = r.habitacion_id
+        WHERE r.id = ?
+        """,
+        (reservacion_id,),
+    ).fetchone()
+
+
+def listar_reservaciones_activas(
+    conexion: sqlite3.Connection,
+) -> list[sqlite3.Row | tuple]:
+    return conexion.execute(
+        """
+        SELECT
+            r.id,
+            r.huesped_id,
+            r.habitacion_id,
+            r.fecha_entrada,
+            r.fecha_salida,
+            r.estado,
+            h.nombre AS huesped_nombre,
+            h.telefono AS huesped_telefono,
+            h.correo AS huesped_correo,
+            a.numero AS habitacion_numero,
+            a.tipo AS habitacion_tipo,
+            a.capacidad AS habitacion_capacidad
+        FROM reservaciones AS r
+        JOIN huespedes AS h ON h.id = r.huesped_id
+        JOIN habitaciones AS a ON a.id = r.habitacion_id
+        WHERE r.estado = 'activa'
+        ORDER BY r.fecha_entrada, r.id
+        """
+    ).fetchall()

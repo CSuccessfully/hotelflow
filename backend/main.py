@@ -1,9 +1,17 @@
 import sqlite3
 
-from fastapi import FastAPI, HTTPException, status
+from fastapi import FastAPI, HTTPException, Response, status
 from pydantic import BaseModel
 
 from backend import database
+from backend.reservaciones import (
+    cancelar_reservacion,
+    consultar_habitaciones_disponibles,
+    crear_reservacion,
+    listar_reservaciones_activas,
+    modificar_reservacion,
+    obtener_reservacion,
+)
 
 
 database.inicializar_base_de_datos()
@@ -22,6 +30,19 @@ class HuespedEntrada(BaseModel):
     correo: str | None = None
 
 
+class ReservacionEntrada(BaseModel):
+    huesped_id: int
+    habitacion_id: int
+    fecha_entrada: str
+    fecha_salida: str
+
+
+class ReservacionModificacion(BaseModel):
+    habitacion_id: int
+    fecha_entrada: str
+    fecha_salida: str
+
+
 def _validar_texto(valor: str, campo: str) -> str:
     valor_limpio = valor.strip()
     if not valor_limpio:
@@ -30,6 +51,46 @@ def _validar_texto(valor: str, campo: str) -> str:
             detail=f"El campo {campo} es obligatorio",
         )
     return valor_limpio
+
+
+def _validar_id(valor: int, campo: str) -> int:
+    if valor <= 0:
+        raise HTTPException(status_code=422, detail=f"El campo {campo} debe ser válido")
+    return valor
+
+
+def _error_reservacion(error: ValueError) -> HTTPException:
+    mensaje = str(error)
+    if "no existe" in mensaje:
+        codigo = status.HTTP_404_NOT_FOUND
+    elif "disponible" in mensaje or "activa" in mensaje:
+        codigo = status.HTTP_409_CONFLICT
+    else:
+        codigo = 422
+    return HTTPException(status_code=codigo, detail=mensaje)
+
+
+def _representar_reservacion(fila) -> dict:
+    return {
+        "id": fila["id"],
+        "huesped_id": fila["huesped_id"],
+        "habitacion_id": fila["habitacion_id"],
+        "fecha_entrada": fila["fecha_entrada"],
+        "fecha_salida": fila["fecha_salida"],
+        "estado": fila["estado"],
+        "huesped": {
+            "id": fila["huesped_id"],
+            "nombre": fila["huesped_nombre"],
+            "telefono": fila["huesped_telefono"],
+            "correo": fila["huesped_correo"],
+        },
+        "habitacion": {
+            "id": fila["habitacion_id"],
+            "numero": fila["habitacion_numero"],
+            "tipo": fila["habitacion_tipo"],
+            "capacidad": fila["habitacion_capacidad"],
+        },
+    }
 
 
 @app.post("/habitaciones", status_code=status.HTTP_201_CREATED)
@@ -99,3 +160,73 @@ def registrar_huesped(huesped: HuespedEntrada) -> dict:
         ).fetchone()
 
     return dict(fila)
+
+
+@app.get("/habitaciones/disponibles")
+def consultar_disponibilidad(fecha_entrada: str, fecha_salida: str) -> list[dict]:
+    try:
+        with database.obtener_conexion() as conexion:
+            filas = consultar_habitaciones_disponibles(
+                conexion, fecha_entrada, fecha_salida
+            )
+    except ValueError as error:
+        raise _error_reservacion(error) from error
+    return [dict(fila) for fila in filas]
+
+
+@app.post("/reservaciones", status_code=status.HTTP_201_CREATED)
+def registrar_reservacion(reservacion: ReservacionEntrada) -> dict:
+    _validar_id(reservacion.huesped_id, "huesped_id")
+    _validar_id(reservacion.habitacion_id, "habitacion_id")
+    try:
+        with database.obtener_conexion() as conexion:
+            reservacion_id = crear_reservacion(
+                conexion,
+                reservacion.huesped_id,
+                reservacion.habitacion_id,
+                reservacion.fecha_entrada,
+                reservacion.fecha_salida,
+            )
+            fila = obtener_reservacion(conexion, reservacion_id)
+    except ValueError as error:
+        raise _error_reservacion(error) from error
+    return _representar_reservacion(fila)
+
+
+@app.get("/reservaciones/activas")
+def consultar_reservaciones_activas() -> list[dict]:
+    with database.obtener_conexion() as conexion:
+        filas = listar_reservaciones_activas(conexion)
+    return [_representar_reservacion(fila) for fila in filas]
+
+
+@app.put("/reservaciones/{reservacion_id}")
+def actualizar_reservacion(
+    reservacion_id: int, reservacion: ReservacionModificacion
+) -> dict:
+    _validar_id(reservacion_id, "reservacion_id")
+    _validar_id(reservacion.habitacion_id, "habitacion_id")
+    try:
+        with database.obtener_conexion() as conexion:
+            modificar_reservacion(
+                conexion,
+                reservacion_id,
+                reservacion.habitacion_id,
+                reservacion.fecha_entrada,
+                reservacion.fecha_salida,
+            )
+            fila = obtener_reservacion(conexion, reservacion_id)
+    except ValueError as error:
+        raise _error_reservacion(error) from error
+    return _representar_reservacion(fila)
+
+
+@app.delete("/reservaciones/{reservacion_id}", status_code=status.HTTP_204_NO_CONTENT)
+def eliminar_reservacion(reservacion_id: int) -> Response:
+    _validar_id(reservacion_id, "reservacion_id")
+    try:
+        with database.obtener_conexion() as conexion:
+            cancelar_reservacion(conexion, reservacion_id)
+    except ValueError as error:
+        raise _error_reservacion(error) from error
+    return Response(status_code=status.HTTP_204_NO_CONTENT)
