@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-labelledby="titulo descripcion">
+  <title id="titulo">Logotipo de HotelFlow</title>
+  <desc id="descripcion">Edificio de hotel combinado con un calendario</desc>
+
+  <!-- Edificio del hotel -->
+  <path d="M10 68V24l23-12v56H10Z" fill="#2d6a91" stroke="#ffffff" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M7 68h30" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+  <path d="M21 29v7M21 43v7M21 57v7M29 25v7M29 39v7M29 53v7" stroke="#ffffff" stroke-width="3" stroke-linecap="round"/>
+  <path d="M17 68V58h8v10" fill="#17324d" stroke="#ffffff" stroke-width="2"/>
+
+  <!-- Calendario y letra H -->
+  <rect x="34" y="25" width="37" height="39" rx="5" fill="#17324d" stroke="#ffffff" stroke-width="3"/>
+  <path d="M34 37h37M44 20v10M61 20v10" fill="none" stroke="#2d6a91" stroke-width="4" stroke-linecap="round"/>
+  <path d="M47 44v17M58 44v17M47 52h11" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round"/>
+</svg>

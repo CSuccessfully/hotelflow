@@ -1,6 +1,8 @@
 import sqlite3
+from pathlib import Path
 
 from fastapi import FastAPI, HTTPException, Response, status
+from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
 
 from backend import database
@@ -16,6 +18,11 @@ from backend.reservaciones import (
 
 database.inicializar_base_de_datos()
 app = FastAPI(title="HotelFlow")
+
+
+@app.get("/salud")
+def consultar_salud() -> dict[str, str]:
+    return {"estado": "ok", "mensaje": "El servicio está funcionando"}
 
 
 class HabitacionEntrada(BaseModel):
@@ -230,3 +237,7 @@ def eliminar_reservacion(reservacion_id: int) -> Response:
     except ValueError as error:
         raise _error_reservacion(error) from error
     return Response(status_code=status.HTTP_204_NO_CONTENT)
+
+
+FRONTEND_DIR = Path(__file__).resolve().parent.parent / "frontend"
+app.mount("/", StaticFiles(directory=FRONTEND_DIR, html=True), name="frontend")

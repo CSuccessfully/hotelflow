@@ -1,0 +1,79 @@
+:root {
+  --azul: #17324d;
+  --azul-claro: #2d6a91;
+  --fondo: #f4f7f9;
+  --blanco: #ffffff;
+  --texto: #24313d;
+  --muted: #6c7a86;
+  --borde: #dce5eb;
+  --verde: #24734d;
+  --rojo: #a53e3e;
+  --sombra: 0 10px 28px rgba(23, 50, 77, .08);
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--fondo);
+  color: var(--texto);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.45;
+}
+
+.contenedor { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+.encabezado { background: var(--azul); color: var(--blanco); padding: 30px 0; }
+.encabezado__contenido { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.marca, .etiqueta { margin: 0 0 5px; font-size: .75rem; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.marca { color: #9ed0e9; }
+h1, h2, p { margin-top: 0; }
+h1 { margin-bottom: 6px; font-size: clamp(1.65rem, 3vw, 2.35rem); }
+h2 { margin-bottom: 0; font-size: 1.25rem; }
+.subtitulo { margin: 0; color: #c3d2dc; }
+.indicador { border: 1px solid #64839a; border-radius: 999px; padding: 7px 13px; color: #e5f0f5; font-size: .85rem; white-space: nowrap; }
+.principal { padding: 30px 0 55px; }
+.tarjeta { margin-bottom: 22px; padding: 24px; background: var(--blanco); border: 1px solid var(--borde); border-radius: 16px; box-shadow: var(--sombra); }
+.seccion__encabezado { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 22px; }
+.etiqueta { color: var(--azul-claro); }
+.numero-paso { color: #b7c7d2; font-size: 1.4rem; font-weight: 800; }
+.columnas { display: grid; grid-template-columns: minmax(0, .9fr) minmax(0, 1.1fr); gap: 22px; align-items: start; }
+.formulario { display: grid; gap: 15px; }
+.formulario--fechas { grid-template-columns: 1fr 1fr auto; align-items: end; }
+label { display: grid; gap: 7px; color: var(--texto); font-size: .9rem; font-weight: 700; }
+input { width: 100%; padding: 11px 12px; border: 1px solid #cbd8e0; border-radius: 9px; color: var(--texto); background: #fbfcfd; font: inherit; font-weight: 400; }
+input:focus { outline: 3px solid rgba(45, 106, 145, .18); border-color: var(--azul-claro); }
+.opcional { color: var(--muted); font-weight: 400; }
+.boton { border: 0; border-radius: 9px; padding: 11px 15px; cursor: pointer; font: inherit; font-weight: 750; transition: transform .15s, opacity .15s, background .15s; }
+.boton:hover:not(:disabled) { transform: translateY(-1px); }
+.boton:disabled { cursor: not-allowed; opacity: .55; }
+.boton--principal { background: var(--azul); color: var(--blanco); }
+.boton--principal:hover:not(:disabled) { background: #21496a; }
+.boton--secundario { background: #eaf1f5; color: var(--azul); font-size: .85rem; }
+.boton--pequeno { background: #e8f1f5; color: var(--azul-claro); padding: 8px 12px; font-size: .85rem; }
+.resultados, .lista { display: grid; gap: 10px; margin-top: 20px; }
+.habitacion, .reservacion { display: flex; justify-content: space-between; align-items: center; gap: 15px; padding: 14px; border: 1px solid var(--borde); border-radius: 11px; background: #fbfcfd; }
+.habitacion__numero { margin-bottom: 2px; font-weight: 800; }
+.habitacion__detalle, .reservacion__detalle { margin: 0; color: var(--muted); font-size: .88rem; }
+.habitacion.seleccionada { border-color: var(--azul-claro); background: #edf6fa; }
+.seleccion { margin-bottom: 18px; padding: 12px; border-radius: 9px; font-size: .9rem; }
+.aviso { background: #f2f5f7; color: var(--muted); }
+.seleccion--activa { background: #e9f4ee; color: var(--verde); }
+.reservacion { align-items: flex-start; }
+.reservacion__nombre { margin-bottom: 3px; font-weight: 800; }
+.reservacion__fecha { margin: 4px 0 0; color: var(--azul-claro); font-size: .85rem; font-weight: 700; }
+.mensaje { margin-bottom: 20px; padding: 13px 16px; border-radius: 9px; font-weight: 650; }
+.mensaje--error { background: #fceceb; color: var(--rojo); }
+.mensaje--exito { background: #e8f5ed; color: var(--verde); }
+.mensaje--cargando { background: #eaf1f5; color: var(--azul); }
+.vacio { color: var(--muted); font-size: .92rem; }
+
+@media (max-width: 760px) {
+  .contenedor { width: min(100% - 22px, 600px); }
+  .encabezado { padding: 23px 0; }
+  .encabezado__contenido { align-items: flex-start; flex-direction: column; }
+  .principal { padding-top: 20px; }
+  .tarjeta { padding: 18px; border-radius: 13px; }
+  .columnas, .formulario--fechas { grid-template-columns: 1fr; }
+  .formulario--fechas .boton { width: 100%; }
+  .habitacion, .reservacion { align-items: flex-start; }
+}

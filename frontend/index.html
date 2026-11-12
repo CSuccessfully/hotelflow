@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HotelFlow | Reservaciones</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor encabezado__contenido">
+      <div>
+        <p class="marca"><img src="logo.svg" alt="Logotipo de HotelFlow" style="height: 40px; width: auto; vertical-align: middle; margin-right: 8px;">HOTELFLOW</p>
+        <h1>Gestión de reservaciones</h1>
+        <p class="subtitulo">Consulta disponibilidad y atiende a tus huéspedes.</p>
+      </div>
+      <span class="indicador">Recepción</span>
+    </div>
+  </header>
+
+  <main class="contenedor principal">
+    <div id="mensaje" class="mensaje" role="status" aria-live="polite" hidden></div>
+
+    <section class="tarjeta" aria-labelledby="titulo-disponibilidad">
+      <div class="seccion__encabezado">
+        <div>
+          <p class="etiqueta">Paso 1</p>
+          <h2 id="titulo-disponibilidad">Buscar disponibilidad</h2>
+        </div>
+        <span class="numero-paso">01</span>
+      </div>
+      <form id="form-disponibilidad" class="formulario formulario--fechas">
+        <label>
+          Fecha de entrada
+          <input id="fecha-entrada" name="fecha_entrada" type="date" required>
+        </label>
+        <label>
+          Fecha de salida
+          <input id="fecha-salida" name="fecha_salida" type="date" required>
+        </label>
+        <button class="boton boton--principal" type="submit">Buscar habitaciones</button>
+      </form>
+      <div id="resultados-disponibilidad" class="resultados" aria-live="polite"></div>
+    </section>
+
+    <div class="columnas">
+      <section class="tarjeta" aria-labelledby="titulo-reservacion">
+        <div class="seccion__encabezado">
+          <div>
+            <p class="etiqueta">Paso 2</p>
+            <h2 id="titulo-reservacion">Registrar huésped y reservar</h2>
+          </div>
+          <span class="numero-paso">02</span>
+        </div>
+        <div id="habitacion-seleccionada" class="seleccion aviso">Primero busca y elige una habitación.</div>
+        <form id="form-reservacion" class="formulario">
+          <label>
+            Nombre completo
+            <input id="nombre" name="nombre" type="text" autocomplete="name" required>
+          </label>
+          <label>
+            Teléfono
+            <input id="telefono" name="telefono" type="tel" autocomplete="tel" required>
+          </label>
+          <label>
+            Correo <span class="opcional">(opcional)</span>
+            <input id="correo" name="correo" type="email" autocomplete="email">
+          </label>
+          <button id="boton-reservar" class="boton boton--principal" type="submit" disabled>Crear reservación</button>
+        </form>
+      </section>
+
+      <section class="tarjeta" aria-labelledby="titulo-activas">
+        <div class="seccion__encabezado">
+          <div>
+            <p class="etiqueta">Estado del hotel</p>
+            <h2 id="titulo-activas">Reservaciones activas</h2>
+          </div>
+          <button id="boton-actualizar" class="boton boton--secundario" type="button">Actualizar</button>
+        </div>
+        <div id="reservaciones-activas" class="lista" aria-live="polite"></div>
+      </section>
+    </div>
+  </main>
+
+  <template id="plantilla-habitacion">
+    <article class="habitacion">
+      <div>
+        <p class="habitacion__numero"></p>
+        <p class="habitacion__detalle"></p>
+      </div>
+      <button class="boton boton--pequeno" type="button">Elegir</button>
+    </article>
+  </template>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
